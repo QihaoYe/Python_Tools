@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 # coding: utf-8
+__author__ = 'Yee_172'
+__data__ = '2017/8/15'
 
 import numpy as np
+
 
 def GetAreaOfPolyGon(points):
     area = 0
@@ -40,6 +43,7 @@ def GetAreaOfTriangle(p1, p2, p3):
     area = s * (s - p1p2) * (s - p2p3) * (s - p3p1)
     area = np.sqrt(area)
     return area
+
 
 def GetLineLength(p1, p2):
     return np.linalg.norm(p1 - p2)
