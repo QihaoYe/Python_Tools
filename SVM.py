@@ -28,6 +28,21 @@ def load_data(filename, data, dimension):
             sample[int(kv[0])] = float(kv[1])
         data.append((label, sample))
 
+
+def svm_train(data4train, dimension, W, iterations, lm, lr):
+    """
+    Training function
+    Object function: obj(<X,y>, W) = (for all<X,y>SUM{max{0, 1 - W*X*y}}) + lm / 2 * ||W||^2, i.e. hinge+L2
+    """
+    pass
+
+
+def svm_predict(data4test, dimension, W):
+    """
+    Prediction function
+    """
+    pass
+
 # ---[test zone]---
 # data = []
 # train = '/Users/apple/Documents/Atom/Python_Tools/Origin_Code/SVM/train.txt'
