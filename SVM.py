@@ -4,6 +4,7 @@ __author__ = 'Yee_172'
 __data__ = '2017/9/12'
 
 import sys
+import random
 import numpy as np
 
 EPS = 0.000000001
@@ -15,7 +16,7 @@ def load_data(filename, data, dimension):
     Date in date: [[label, sample],[label, sample], ...], where sample: [v_0, v_1, v_2, v_3, ..., v_dim]
     """
     for line in open(filename, 'rt'):
-        sample = [0.0 for v in range(0, dimension + 1)]
+        sample = np.zeros(dimension + 1)
         line = line.rstrip('\r\n\r')
         # Delete the tail if it exists
         fields = line.split('\t')
@@ -34,6 +35,13 @@ def svm_train(data4train, dimension, W, iterations, lm, lr):
     Training function
     Object function: obj(<X,y>, W) = (for all<X,y>SUM{max{0, 1 - W*X*y}}) + lm / 2 * ||W||^2, i.e. hinge+L2
     """
+    grad = X = np.zeros(dimension + 1)
+    # <sample, label> => <X, y>
+    num_train = len(data4train)
+    for i in range(iterations):
+        index = random.randint(0, num_train - 1)
+        y = data4train[index][0]
+        X = data4train[index][1]
     pass
 
 
