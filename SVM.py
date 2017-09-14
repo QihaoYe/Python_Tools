@@ -40,15 +40,26 @@ def svm_train(data4train, dimension, W, iterations, lm, lr):
     num_train = len(data4train)
     for i in range(iterations):
         index = random.randint(0, num_train - 1)
-        y = data4train[index][0]
         X = data4train[index][1]
-    pass
+        y = data4train[index][0]
+        WX = (W * X).sum()
+        if 1 - WX * y > 0:
+            grad = lm * W - X * y
+        else:
+            grad = lm * W - 0
+        W = W - lr * grad
 
 
 def svm_predict(data4test, dimension, W):
     """
     Prediction function
     """
+    num_test = len(data4test)
+    num_correct = 0
+    for i in range(num_test):
+        target = data4test[i][0]
+        X = data4test[i][1]
+        weight = (X * W).sum()
     pass
 
 # ---[test zone]---
