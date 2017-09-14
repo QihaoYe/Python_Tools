@@ -60,7 +60,11 @@ def svm_predict(data4test, dimension, W):
         target = data4test[i][0]
         X = data4test[i][1]
         weight = (X * W).sum()
-    pass
+        predict = 1 if weight > 0 else -1
+        if predict * target > 0:
+            num_correct += 1
+    return num_correct / num_test
+
 
 # ---[test zone]---
 # data = []
