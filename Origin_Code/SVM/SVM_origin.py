@@ -93,9 +93,9 @@ if __name__ == "__main__":
     for i in range(0, epochs):
         svm_train(data4train, dim, W, iterations, lm, lr);
         accuracy = svm_predict(data4test, dim, W);
-        print "epoch:%d\taccuracy:%f"%(i, accuracy);
+        print ("epoch:%d\taccuracy:%f"%(i, accuracy));
     #输出结果权值 
     for i in range(0, dim + 1):
         if math.fabs(W[i]) > EPS:
-            print "%d\t%f"%(i, W[i]);   
+            print ("%d\t%f"%(i, W[i]));   
     sys.exit(0);

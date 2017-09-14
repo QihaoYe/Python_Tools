@@ -3,11 +3,11 @@
 __author__ = 'Yee_172'
 __data__ = '2017/9/12'
 
-import sys
 import random
 import numpy as np
 
 EPS = 0.000000001
+
 
 def load_data(filename, data, dimension):
     """
@@ -30,12 +30,11 @@ def load_data(filename, data, dimension):
         data.append((label, sample))
 
 
-def svm_train(data4train, dimension, W, iterations, lm, lr):
+def svm_train(data4train, W, iterations, lm, lr):
     """
     Training function
     Object function: obj(<X,y>, W) = (for all<X,y>SUM{max{0, 1 - W*X*y}}) + lm / 2 * ||W||^2, i.e. hinge+L2
     """
-    grad = X = np.zeros(dimension + 1)
     # <sample, label> => <X, y>
     num_train = len(data4train)
     for i in range(iterations):
@@ -48,9 +47,10 @@ def svm_train(data4train, dimension, W, iterations, lm, lr):
         else:
             grad = lm * W - 0
         W = W - lr * grad
+    return W
 
 
-def svm_predict(data4test, dimension, W):
+def svm_predict(data4test, W):
     """
     Prediction function
     """
@@ -59,16 +59,19 @@ def svm_predict(data4test, dimension, W):
     for i in range(num_test):
         target = data4test[i][0]
         X = data4test[i][1]
-        weight = (X * W).sum()
-        predict = 1 if weight > 0 else -1
+        total = (X * W).sum()
+        predict = 1 if total > 0 else -1
         if predict * target > 0:
             num_correct += 1
-    return num_correct / num_test
+    return round(num_correct / num_test, 10)
 
 
 # ---[test zone]---
-# data = []
-# train = '/Users/apple/Documents/Atom/Python_Tools/Origin_Code/SVM/train.txt'
-# dim = 15
-# load_data(train, data, dim)
-# print(data)
+# epochs = 100
+# iterations = 10
+# data4train = []
+# data4test = []
+# lm = 0.0001
+# lr = 0.01
+# dim = 1000
+# W = np.zeros(dim + 1)
