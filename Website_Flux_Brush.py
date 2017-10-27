@@ -4,6 +4,7 @@ __author__ = 'Yee_172'
 __data__ = '2017/10/27'
 
 
+import sys
 import urllib.request
 
 
@@ -15,3 +16,5 @@ N = int(input('Brush time: '))
 req = urllib.request.Request(url=url, headers=headers)
 for i in range(N):
     urllib.request.urlopen(req)
+    sys.stdout.write('%08.5f' % ((i + 1) * 100 / N) + '%\r')
+    sys.stdout.flush()
