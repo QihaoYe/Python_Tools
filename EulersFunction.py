@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # coding: utf-8
 __author__ = 'Yee_172'
-__data__ = '2017/10/09'
+__date__ = '2017/10/09'
 
 
 def generate_division(n):
@@ -27,4 +27,4 @@ def phi(n):
     return n
 
 # ---[test zone]---
-print(phi(20))
+print(phi(10007))
