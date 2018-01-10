@@ -27,4 +27,6 @@ def phi(n):
     return n
 
 # ---[test zone]---
-print(phi(10007))
+# print(phi(10007))
+for i in range(1, 101):
+    print(i, phi(i))
